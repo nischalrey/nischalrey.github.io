@@ -1,29 +1,6 @@
 var music = document.querySelector("#player");
 var timer = document.querySelector(".timer");
 
-window.onload = function(){
-    music.play();
-}
-
-// music.addEventListener('timeupdate', (event) => {
-//     const currentTime = Math.floor(music.currentTime);
-//     minutes = 0;
-//     if (currentTime < 10){
-//         let zeroes = "0" + currentTime;
-//         timer.innerHTML = "00:"+zeroes;
-//     }
-//     else if(currentTime > 59){
-//         let minutes = 1;
-//         let seconds = currentTime%60;
-//     }
-//     else{
-//         timer.innerHTML =  minutes + ":"+currentTime;
-
-//     }
-// }, false);
-
-
-// app.js
 document.addEventListener('DOMContentLoaded', function () {
     setInterval(function () {
         timer.innerText = formatTime(music.currentTime);
@@ -35,3 +12,17 @@ document.addEventListener('DOMContentLoaded', function () {
         return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
     }
 });
+
+function change(x){
+    if (music.paused == true) {
+        music.play();
+        x.classList.remove('fa-play');
+        x.classList.add('fa-pause');
+    }
+    else{
+        music.pause();
+        x.classList.add('fa-play');
+        x.classList.remove('fa-pause');
+    }
+
+}
